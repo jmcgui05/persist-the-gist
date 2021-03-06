@@ -14,6 +14,7 @@ const FavoriteMutation = new GraphQLObjectType({
         forks_url: { type: GraphQLString },
         commits_url: { type: GraphQLString },
         gist_id: { type: GraphQLString },
+        files: { type: GraphQLString },
         node_id: { type: GraphQLString },
         git_pull_url: { type: GraphQLString },
         git_push_url: { type: GraphQLString },
