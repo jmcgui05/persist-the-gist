@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { gistById } = require('../queries');
 
 // GET all gists by username. Example: jthomasmock
 async function getGistsByUser(username) {
