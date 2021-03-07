@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import LinkList from './LinkList';
+import LoadFavorites from './LoadFavorites';
 
 class App extends Component {
   render() {
-    return <LinkList />;
+    return <LoadFavorites />;
   }
 }
 
