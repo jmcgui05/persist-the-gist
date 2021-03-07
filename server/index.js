@@ -11,6 +11,7 @@ let app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/favorites', async (req, res) => {
   const data = await Gists.findAll();
@@ -26,7 +27,24 @@ app.get('/gistsByUser/:username', async(req, res) => {
   const data = await gister.getGistsByUser(req.params.username);
   console.log(data);
   res.send(data);
-})
+});
+
+app.post('/favorites', async(req, res) => {
+  const { id, description, created_at, files } = req.body;
+  const result = await Gists.create({id, description, created_at, files});
+  console.log(result);
+  res.send(result);
+});
+
+app.delete('/favorites/:id', async(req, res) => {
+  const result = await Gists.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  console.log(result);
+  res.end(result);
+});
 
 
 database.sync().then(() => {
@@ -34,12 +52,3 @@ database.sync().then(() => {
     console.log(`Listening on port ${PORT}`)
   })
 })
-
-// app.use('/api', graphqlHTTP({
-//   schema: schema,
-//   graphiql: true,
-// }));
-
-// app.listen(PORT, () =>
-//   console.log(`GraphQL server running on localhost:${PORT}`)
-// );
