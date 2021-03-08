@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import LoadFavorites from './LoadFavorites';
+import FavoriteList from './FavoriteList';
 
 class App extends Component {
   render() {
-    return <LoadFavorites />;
+    return <FavoriteList />;
   }
 }
 

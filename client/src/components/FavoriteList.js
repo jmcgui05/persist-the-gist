@@ -1,29 +1,21 @@
-import React from 'react';
-import Gist from './Gist';
-import { useQuery, gql } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import APIInstance from '../api';
+const [faveList, setFavelist] = useState([]);
 
-const FAVE_QUERY = gql`
-  {
-    favorite{
-      description,
-      created_at,
-      gist_id,
-      files
-    }
-  }
-`;
-
+useEffect(() => {
+  const result = APIInstance.getFavorites();
+  console.log(result);
+  setFavelist(result.data);
+})
 
 const FavoriteList = () => {
-  const { data } = useQuery(FAVE_QUERY);
-  console.log(data)
   return (
     <div>
-      {data && (
+      {faveList && faveList.length(
         <>
-          {data.favorite.map((fave) => (
+          {data.map((fave) => (
             <div>
-            <h1>{fave.gist_id}</h1> 
+            <h1>{fave.id}</h1> 
             <h1>{fave.description}</h1>
             <h1>{fave.created_at}</h1>
             {/* // <Gist key={fave.id} fave={fave} /> */}
