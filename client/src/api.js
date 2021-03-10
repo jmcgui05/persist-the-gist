@@ -67,7 +67,7 @@ async function getFavorites() {
 
 async function getGistById(id) {
   try {
-    const data = await axios.get(`${REACT_APP_API_URL}/gists/gistById/${id}`);
+    const data = await axios.get(`${REACT_APP_API_URL}/gistById/${id}`);
     console.log(data);
     return data;
   } catch(err) {
@@ -77,7 +77,7 @@ async function getGistById(id) {
 
 async function getGistsByUser(username) {
   try {
-    const data = await axios.get(`${REACT_APP_API_URL}/gists/gistsByUser/${username}`);
+    const data = await axios.get(`${REACT_APP_API_URL}/gistsByUser/${username}`);
     console.log(data);
     return data;
   } catch(err) {
